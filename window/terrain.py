@@ -9,9 +9,7 @@ class Terrain():
     """
     This is the terrain construction class. This will assemble every parts of the terrain:
     the path, the walls, the items and the special tiles, and check events on the terrain.
-
     """
-
     def __init__(self):
 
         self.scale = 20
@@ -26,13 +24,21 @@ class Terrain():
         self.num_caught_items = 20
 
     def draw(self):
+        """
+        Calling the elements that appears in the window.
+        """
         self.path.draw()
         self.wall.draw()
         self.items.draw()
         self.special_tiles.draw()
 
     def check_events(self, character):
-
+        """
+        Checking if items are caught cause those need to appear in the inventory, and checking
+        special tiles coordinate.  
+        Return a bool and a string that indicates the game is over and the message that needs to appear
+        on the end screen.
+        """
         for coordinate in self.items.get_coordinates():
             if (character.x, character.y) == coordinate:
                 caught_item = self.items.caught((character.x, character.y))

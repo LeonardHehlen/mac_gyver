@@ -21,6 +21,10 @@ class Game:
         self.end_title = True
     
     def check_events(self):
+        """
+        Checking if the user closed the window
+        Returns nothing.
+        """
         # Checking events ...
         for event in pygame.event.get():
             # Quit condition
@@ -29,6 +33,7 @@ class Game:
                 self.end_title = False
 
     def loop(self):
+        
         self.character.move()
 
         if self.terrain.check_events(self.character)[0]:
